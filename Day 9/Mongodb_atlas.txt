@@ -1,0 +1,9 @@
+mongobd account
+email	: saqeeb.360@gmail.com
+pwd	: forsk@1234
+
+
+cluster0
+
+user_name : saqeeb
+pwd	:forsk@123
