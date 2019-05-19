@@ -8,5 +8,9 @@ Name    :Replacing of character
 
 """
 
-str1="RESTART"
-                    
+str1="RRWIRIHIRFHWIHRHART"
+pos= str1.find("R")             
+str2=str1[pos+1::1]
+str3=str2.replace("R","%")
+print(str1[0:pos+1]+str3)  
+print(str1[0:pos+1]+str1[pos+1::1].replace("R","%"))      #code in one line

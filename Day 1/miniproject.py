@@ -6,11 +6,14 @@ Created on Wed May  8 14:27:18 2019
 """
 
 from random import randint
-x=(randint(0,9))
-y=input("Enter a number = ")
-print("random number is " + str(x))
-if (x==y):
+
+
+secret_number=(randint(0,9))
+guess=input("Enter a number = ")
+print("secret number is " + str(secret_number))
+if (secret_number == guess ):
     print("Winner")
+elif (secret_number-)
 else:
     print("Loser")
-    
+  

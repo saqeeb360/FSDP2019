@@ -9,5 +9,6 @@ Name   :  Factorial
 """
 
 import math
-number=math.factorial(5)
-print(number)
+number=int(input("Enter a number to factorial : "))
+factorial=math.factorial(number)
+print("factorial of "+str(number)+" is " + str(factorial))
