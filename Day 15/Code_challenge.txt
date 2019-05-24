@@ -1,0 +1,15 @@
+continued day14
+Code Challenge 3
+Name: Save your file as IPL.pbix
+Perform the following:
+1. Plot the points table. Also plot on the same chart that how many league matches
+have been played by each team.
+2. Plot top 10 batsmen who scored most.
+3. Plot top 10 batsmen strike rate. Also show how many runs they have scored.
+4. Plot top 10 wicket takers.
+5. Plot top 10 bowling average.
+6. Plot total runs scored team wise.
+7. Plot total wickets team wise.
+8. Plot how much money spent by each team.
+9. Show the purple cap player name.
+10. Show the orange cap player name.
