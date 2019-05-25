@@ -18,4 +18,4 @@ for state in state_name:
             temp_str.append(letter)
     list_final.append("".join(temp_str))
 
-
+print(list_final)

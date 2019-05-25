@@ -16,4 +16,4 @@ for state in state_name:
             temp_str=temp_str+letter
     list_final.append(temp_str)
 
-
+print(list_final)
