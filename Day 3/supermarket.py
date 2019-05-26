@@ -4,26 +4,25 @@ Created on Thu May  9 17:12:59 2019
 
 @author: Windows
 """
-dict1={}
+from collections import OrderedDict
+dict1=OrderedDict()
 
-while True:             #for
-    item=input(">")     #multiple 
-    if not item:        #inputs
-        break           #of str
-    list1=item.split()
-    keys1=list1[0:(len(list1)-1)]
-    keys1=" ".join(keys1)
-    value1=int(list1[-1])
-    if keys1 in dict1:
-        x=dict1.get(keys1)
-        
-        value1=x+value1
-        
-        
-        
+while True:                     #for
+    user_input=input(">")       #multiple 
+    if not user_input:        #inputs
+        break                  #of str
+
+    list1=user_input.split()  #converting str in list
+    
+    item=" ".join(list1[:-1])   #converting user_input name into string
+    price=int(list1[-1])   #taking price
+
+#    if item in dict1:
+#        x=dict1.get(item)
+#        price=x+price
       
-    dict1[keys1]=value1
-
+    dict1[item]=dict1.get(item,0)+ price
+    
 for k in dict1:
     print(k,dict1[k])
     

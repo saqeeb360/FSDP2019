@@ -37,3 +37,6 @@ for character in user_input:
             
 for key, value in dict1.items() :
   print ( key, value )
+  
+  
+  
