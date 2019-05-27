@@ -15,5 +15,27 @@ Name:     generator
 #    list1.append(str1)
 #    
 
-dict1={"abc":12}
-print( dict1.keys(),dict1.values())
+#dict1={"abc":12}
+#print( dict1.keys(),dict1.values())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
