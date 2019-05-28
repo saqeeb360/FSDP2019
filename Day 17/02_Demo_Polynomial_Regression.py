@@ -27,8 +27,8 @@ lin_reg_1.fit(features, labels)
 
 
 
-print "Predicting result with Linear Regression",
-print lin_reg_1.predict(1981)
+print ("Predicting result with Linear Regression")
+print (lin_reg_1.predict(np.array([1981]).reshape(1,1)))
 
 # Visualising the Linear Regression results
 plt.scatter(features, labels, color = 'red')
@@ -48,8 +48,8 @@ lin_reg_2 = LinearRegression()
 lin_reg_2.fit(features_poly, labels)
 
 
-print "Predicting result with Polynomial Regression",
-print lin_reg_2.predict(poly_object.transform(1981))
+print ("Predicting result with Polynomial Regression")
+print (lin_reg_2.predict(poly_object.transform(np.array([1981]).reshape(1,1))))
 
 # Visualising the Polynomial Regression results
 plt.scatter(features, labels, color = 'red')
