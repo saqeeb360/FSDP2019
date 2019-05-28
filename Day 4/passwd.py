@@ -8,7 +8,7 @@ Created on Sat May 11 02:41:00 2019
 import csv
 dict1={}
 
-with open("passwd", "r") as file1:
+with open("passwd.csv", "r") as file1:
     file2=csv.reader(file1,delimiter=":")
     for row in file2:
         if "#" not in row[0]:

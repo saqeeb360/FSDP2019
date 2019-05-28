@@ -232,7 +232,7 @@ crop_im.save('crop_sample1.jpg')
 
 # Adding a Border
 
-img = Image.open("sample.jpg")
+img = Image.open("sample1.jpg")
 border_im = Image.new('RGB', (img.width+20, img.height+20), 'yellow')
 border_im.paste(img, (10, 10))
 border_im.save("data/border_sample.jpg")
