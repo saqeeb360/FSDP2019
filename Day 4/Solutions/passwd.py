@@ -1,6 +1,6 @@
  
 users = {} 
-with open('data/passwd') as f:
+with open('passwd') as f:
     for line in f:
         if not line.startswith("#"):
             user_info = line.split(":")
