@@ -6,6 +6,7 @@ Basics of Matplotlib
     Bar Chart
     Histogram
     Box Plot
+http://www3.ntu.edu.sg/home/ehchua/programming/webprogramming/Python4_DataAnalysis.html
 """
 
 import matplotlib.pyplot as plt
