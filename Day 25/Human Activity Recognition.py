@@ -79,24 +79,117 @@ labels_lbe_train = lbe.fit_transform(labels_train)
 labels_lbe_test= lbe.transform(labels_test)
 
 """
-Implementing Feature selections
+Implementing Feature selections using back elimination
 """
 import statsmodels.api as sm
-features_cons = features_train
-
+features_cons_train = features_train
+features_cons_train = sm.add_constant(features_cons_train)
+features_cons_test = features_test
+features_cons_test = sm.add_constant(features_cons_test)
 i=0
-while i < 100:
-    features_cons = sm.add_constant(features_cons)
-    regressor_OLS = sm.OLS(endog = labels_lbe_train, exog = features_cons).fit()
-    list1 = regressor_OLS.pvalues
-    max_percentage = list1.max()
-    index = np.where(list1==max_percentage)[0][0]
+list1 = []
+while True:
+    regressor_OLS = sm.OLS(endog = labels_lbe_train, exog = features_cons_train).fit()
+    array = regressor_OLS.pvalues
+    max_percentage = array.max()
+    index = np.where(array==max_percentage)[0][0]
+    list1.append(list1)
     if max_percentage > 0.05:
-        print("hello and drop",i)
-        features_cons = np.delete(features_cons,(index),axis=1)
+        print("Executing..",i)
+        features_cons_train = np.delete(features_cons_train,(index),axis=1)
+        features_cons_test = np.delete(features_cons_test,(index),axis=1)
     else:
         break
-    i = i + 1
+    i=i+1
+
+"""
+New Features size and Labels size
+"""
+print(features_cons_train)
+print(features_cons_test)
+
+
+"""
+Implementing the Decision Tree Classifier on revised dataset
+"""
+from sklearn.tree import DecisionTreeClassifier
+dtc1 = DecisionTreeClassifier(random_state=0)
+dtc1.fit(features_cons_train,labels_train)
+labels_pred_dct1 = dtc1.predict(features_cons_test)
+score_dtc1 = dtc1.score(features_cons_test,labels_test)
+from sklearn.metrics import confusion_matrix  
+print(confusion_matrix(labels_test, labels_pred_dct1))  
+
+"""
+Implementing the Random Forest Classifier
+"""
+from sklearn.ensemble import RandomForestClassifier
+rfc1 = RandomForestClassifier(n_estimators=20, random_state=0)
+rfc1.fit(features_cons_train,labels_train)
+labels_pred_rfc1 =  rfc1.predict(features_cons_test)
+score_rfc1 = rfc1.score(features_cons_test,labels_test)
+from sklearn.metrics import confusion_matrix  
+print(confusion_matrix(labels_test, labels_pred_rfc1)) 
+
+"""
+Implementing the Logistic Regression 
+"""
+from sklearn.linear_model import LogisticRegression
+lrc1 = LogisticRegression()
+lrc1.fit(features_cons_train,labels_train)
+labels_pred_lrc1 =  lrc1.predict(features_cons_test)
+score_lrc1 = lrc1.score(features_cons_test,labels_test)
+from sklearn.metrics import confusion_matrix  
+print(confusion_matrix(labels_test, labels_pred_lrc1)) 
+
+"""
+Implementing the kNN
+"""
+from sklearn.neighbors import KNeighborsClassifier
+knn1 = KNeighborsClassifier(n_neighbors=5)
+knn1.fit(features_cons_train,labels_train)
+labels_pred_knn1 =  knn1.predict(features_cons_test)
+score_knn1 = knn1.score(features_cons_test,labels_test)
+from sklearn.metrics import confusion_matrix  
+print(confusion_matrix(labels_test, labels_pred_knn1)) 
+
+"""
+Visualising the score after feature selection through back elimination
+"""
+
+label = ['score_dtc', 'score_dtc1' ,'', 'score_knn' , 'score_knn1','',
+          'score_lrc', 'score_lrc1','', 'score_rfc' , 'score_rfc1']
+
+score = [score_dtc , score_dtc1 ,np.array(0), score_knn ,score_knn1,np.array(0),
+         score_lrc,score_lrc1,np.array(0),score_rfc,score_rfc1]
+
+x_axis = np.arange(len(label))
+x=[1,1]
+y=[-1,12]
+
+plt.figure(figsize=[12,10])
+plt.bar(x_axis,score)
+plt.plot(y,x)
+plt.grid(axis='both')
+plt.xticks(x_axis,label , fontsize =14 , rotation = 90)
+plt.title("Comparision of the score",fontsize=20)
+plt.ylabel("Accuracy_Score",fontsize = 14)
+plt.ylim(.5,1.1)
+plt.savefig("Comparision_of_score.jpg")
+plt.show()
+
+"""
+Conclusion :
+   "The above accuracy score of the logistics regression is the 
+    maximum without feature selection,
+    and after feature selection the accuracy score decreases."    
+"""
+    
+    
+    
+    
+    
+    
 
 
 
