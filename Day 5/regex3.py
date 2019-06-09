@@ -12,14 +12,20 @@ Created on Sat May 11 18:43:20 2019
 
 import re
 
-number="4324-3546-5768-7981"
-
-result=re.match(r'^[456]{1}[0-9]{3}-[0-9]{4}-[0-9]{4}-[0-9]{4}',number)
-print(result)
+while True:    
+    number= input(">").strip()
+    if not number:
+        print("Exiting...")
+        break
+    reg = r'^[456](\d{15}|\d{3}-\d{4}-\d{4}-\d{4}$)'
     
-if result:
-    print(number)
-else:
-    print("Invalid")
+    result=re.match(reg,number)
+    repeat = re.search(r'(\d)\1{3,}',number.replace("-",""))
+    
+        
+    if not repeat and result:
+        print("Valid")
+    else:
+        print("Invalid")
 
 
