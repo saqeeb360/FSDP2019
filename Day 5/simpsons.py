@@ -10,9 +10,9 @@ list1 = []
 
 with open("simpsons_phone_book.txt","r") as file1:
     for i in file1:
-        result = re.findall(r'^J[A-Za-z]+ Neu \d+-\d+$',i)
+        result = re.search(r'^J.*Neu',i)
         if result:
-            list1.append(i)
+            list1.append(i.strip())
 
 print(list1)
             
